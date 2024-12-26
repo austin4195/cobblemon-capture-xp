@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "cobblemon_capturexp",
-  "version": "1.5-fabric-1.0.1",
+  "version": "1.6-fabric-1.0.2",
   "name": "Cobblemon Capture EXP",
   "description": "Grants EXP for your team when you capture a wild Pokemon",
   "authors": [
-    "TimInc aka Timothy Metcalfe"
+    "TimInc aka Timothy Metcalfe",
+    "austin4195"
   ],
   "license": "MIT",
   "environment": "*",
@@ -18,11 +19,11 @@
     ]
   },
   "depends": {
-    "java": ">=17",
-    "minecraft": "1.20.1",
-    "fabricloader": ">=0.14.21",
-    "fabric-language-kotlin": ">=1.9.3+kotlin.1.8.20",
+    "java": ">=21",
+    "minecraft": "1.21.1",
+    "fabricloader": ">=0.15.11",
+    "fabric-language-kotlin": ">=1.13.0+kotlin.2.1.0",
     "fabric": "*",
-    "cobblemon": ">=1.5.0"
+    "cobblemon": ">=1.6.0"
   }
 }
