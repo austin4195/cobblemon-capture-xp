@@ -59,9 +59,20 @@ object CaptureXP : ModInitializer {
         targetMons.forEach { targetMon ->
             val xpShareOnly = targetMon.uuid != first.uuid
             val xpShareOnlyModifier = (if (xpShareOnly) Cobblemon.config.experienceShareMultiplier else 1).toDouble()
+
+            val sourceBattleMon = BattlePokemon.safeCopyOf(targetMon)
+            val targetBattleMon = BattlePokemon.safeCopyOf(event.pokemon)
+
+            // Validate actor initialization
+            if (sourceBattleMon.actor == null || targetBattleMon.actor == null) {
+                // Log or safely skip
+                println("Actor is uninitialized for BattlePokemon objects.")
+                return@forEach
+            }
+
             val experience = Cobblemon.experienceCalculator.calculate(
-                BattlePokemon.safeCopyOf(targetMon),
-                BattlePokemon.safeCopyOf(event.pokemon),
+                sourceBattleMon,
+                targetBattleMon,
                 captureXPConfig.multiplier * xpShareOnlyModifier
             )
             targetMon.addExperienceWithPlayer(event.player, source, experience)
